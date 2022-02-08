@@ -1,0 +1,141 @@
+﻿<Window x:Class="WPF_Game.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_Game"
+        mc:Ignorable="d"
+        Title="MainWindow"  Height="720" Width="1280" WindowState="Maximized" >
+
+    <Viewbox Stretch="Uniform" >
+        <Grid Background="BurlyWood" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="720" Width="1280">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10*"></ColumnDefinition>
+                <ColumnDefinition Width="30*" ></ColumnDefinition>
+                <ColumnDefinition Width="15*"></ColumnDefinition>
+                <ColumnDefinition Width="30*"></ColumnDefinition>
+                <ColumnDefinition Width="10*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5*"></RowDefinition>
+                <RowDefinition Height="15*"></RowDefinition>
+                <RowDefinition Height="30*"></RowDefinition>
+                <RowDefinition Height="30*"></RowDefinition>
+                <RowDefinition Height="15*"></RowDefinition>
+                <RowDefinition Height="5*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+
+            <!--not player turn side-->
+            <!--board-->
+            <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Background="#964910" >
+                <ListView HorizontalContentAlignment="Center" Background="#964910" ItemsSource="{Binding NotPlayerTurn.Board}" SelectedItem="{Binding NotPlayerTurnSelectedCreature}">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel HorizontalAlignment="Center" Orientation="Horizontal" Height="196">
+
+                            </WrapPanel>
+                        </ItemsPanelTemplate >
+
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <local:CreatureV>
+
+                            </local:CreatureV>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+
+            <!--hand-->
+            <!--<Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" Background="#635869">
+                <ListView HorizontalContentAlignment="Center" Background="#635869" ItemsSource="{Binding NotPlayerTurn.Hand}">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel HorizontalAlignment="Center" Orientation="Horizontal" Height="140">
+
+                            </WrapPanel>
+                        </ItemsPanelTemplate >
+
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <local:CardV>
+
+                            </local:CardV>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>-->
+
+            <Grid Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="2"  >
+                <ListView Background="BurlyWood" >
+                    <local:PlayerV Height="140" MouseDown="Grid_MouseRightButtonDown" DataContext="{Binding NotPlayerTurn}">
+
+                    </local:PlayerV>
+                </ListView>
+            </Grid>
+
+            <Button x:Name="Sound_Off_Button" Grid.Row="0" Grid.Column="4" Background="Transparent" Command="{Binding Sound_Command}" Click="Sound_Off_Button_Click">
+                <Image DataContext="{Binding Sound_Image}" ></Image>
+            </Button>
+
+
+            <!--player turn side-->
+            <!--board-->
+            <Grid Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Background="#964910">
+                <ListView HorizontalContentAlignment="Center" Background="#964910" ItemsSource="{Binding PlayerTurn.Board}" SelectedItem="{Binding PlayerTurnSelectedCreature}">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel HorizontalAlignment="Center" Orientation="Horizontal" Height="196">
+
+                            </WrapPanel>
+                        </ItemsPanelTemplate >
+
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <local:CreatureV>
+
+                            </local:CreatureV>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+            <!--endbutton-->
+
+            <Button Grid.Row="5" Grid.Column="4" Command="{Binding Turn_End_Command}" Content="Закончить ход">
+
+
+            </Button>
+
+            <!--hand-->
+            <Grid Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" Background="#635869">
+                <ListView HorizontalContentAlignment="Center" Background="#635869" ItemsSource="{Binding PlayerTurn.Hand}" SelectedItem="{Binding SelectedCard}">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel HorizontalAlignment="Center" Orientation="Horizontal" Height="122">
+
+                            </WrapPanel>
+                        </ItemsPanelTemplate >
+
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <local:CardV>
+
+                            </local:CardV>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+            <Grid Grid.Row="4" Grid.Column="2" Grid.RowSpan="2" Grid.ColumnSpan="2">
+                <local:PlayerV DataContext="{Binding PlayerTurn}">
+
+                </local:PlayerV>
+            </Grid>
+        </Grid>
+    </Viewbox>
+</Window>

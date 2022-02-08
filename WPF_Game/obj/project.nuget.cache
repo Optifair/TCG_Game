@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "dgSpecHash": "I1evRonu+iyUuDmyS1XLE9bu/mEU4jLVfOHYFC9HJGE3vVnUuoF5vyrrJrSxGhiodyAFJKmKZ2WU+hRR2+H2mw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\optif\\Downloads\\TCG_Game-f20de9133769b10eee4e9c63ac1780fd84366703\\TCG_Game\\WPF_Game\\WPF_Game.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\optif\\.nuget\\packages\\mvvmlightlibs\\5.4.1.1\\mvvmlightlibs.5.4.1.1.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Пакет \"MvvmLightLibs 5.4.1.1\" был восстановлен с помощью \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\", а не целевой платформы проекта \"net5.0-windows7.0\". Этот пакет может быть не полностью совместим с вашим проектом.",
+      "libraryId": "MvvmLightLibs",
+      "targetGraphs": [
+        "net5.0-windows7.0"
+      ]
+    }
+  ]
+}
